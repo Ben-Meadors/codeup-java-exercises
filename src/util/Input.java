@@ -3,6 +3,7 @@ package util;
 import java.util.Scanner;
 
 public class Input {
+
     private Scanner scanner ;
 
     public Input(){
@@ -15,9 +16,9 @@ public class Input {
 
     public boolean yesNo(){
         String userInput = scanner.nextLine();
-        if(userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("yes")){
+        if (userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("y")){
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -28,7 +29,8 @@ public class Input {
 
     public double getDouble(){
         return this.scanner.nextDouble();
-    }
+    };
+
 
     public int getInt(int min, int max, String prompt){
         System.out.println(prompt);
@@ -36,18 +38,28 @@ public class Input {
         if(userNum >= min && userNum <= max){
             return userNum;
         }
-        System.out.println("Try again");
-        return getInt(min, max, prompt);
+        System.out.println("Integer not between bounds. Enter integer: ");
+        return getInt(min, max,prompt);
+    }
+
+    public int getInt(int min, int max){
+        int userNum = Integer.valueOf(this.getString());
+        if(userNum >= min && userNum <= max){
+            return userNum;
+        }
+        System.out.println("Integer not between bounds. Enter integer: ");
+        return getInt(min, max);
     }
 
     public double getDouble(double min, double max, String prompt){
         System.out.println(prompt);
+
         double userNum = Double.valueOf(this.getString());
         if(userNum >= min && userNum <= max){
             return userNum;
         }
-        System.out.println("Try again");
-        return getDouble(min, max, prompt);
+        System.out.println("Double not between bounds. Enter a double: ");
+        return getDouble(min, max,prompt);
     }
 
     public static void main(String[] args) {
@@ -56,8 +68,6 @@ public class Input {
 //        System.out.println(inputOne.getString());
 //        System.out.println("yesNo: ");
 //        System.out.println(inputOne.yesNo());
-//        System.out.println("give a number between 1-10");
-//        System.out.println(inputOne.getInt(1,10));
+        System.out.println(inputOne.getInt(1, 10,"give me an integer between 1-10"));
     }
-
 }
