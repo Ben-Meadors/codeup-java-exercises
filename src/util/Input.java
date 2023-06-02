@@ -24,12 +24,26 @@ public class Input {
     }
 
     public int getInt(){
-        return this.scanner.nextInt();
+        System.out.println("Please enter an integer");
+        String strValue = getString();
+        try{
+            return Integer.valueOf(strValue);
+        }catch(NumberFormatException e){
+            System.out.println("You did not enter an integer");
+            return getInt();
+        }
     }
 
     public double getDouble(){
-        return this.scanner.nextDouble();
-    };
+        System.out.println("Please enter a double");
+        String strValue = getString();
+        try{
+            return Double.valueOf(strValue);
+        }catch(NumberFormatException e){
+            System.out.println("You did not enter a double");
+            return getDouble();
+        }
+    }
 
 
     public int getInt(int min, int max, String prompt){
@@ -68,6 +82,8 @@ public class Input {
 //        System.out.println(inputOne.getString());
 //        System.out.println("yesNo: ");
 //        System.out.println(inputOne.yesNo());
-        System.out.println(inputOne.getInt(1, 10,"give me an integer between 1-10"));
+//        System.out.println(inputOne.getInt(1, 10,"give me an integer between 1-10"));
+//        System.out.println(inputOne.getInt());
+        System.out.println(inputOne.getDouble());
     }
 }

@@ -14,6 +14,7 @@ public class Rectangle extends Quadrilateral implements Measurable {
         return length * width;
     }
 
+
     public Rectangle(double length, double width){
         super(length, width);
         this.width = width;
